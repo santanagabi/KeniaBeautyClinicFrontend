@@ -78,6 +78,8 @@ function Notificacoes() {
         justifyContent: "space-between",
         alignItems: "center",
         backgroundColor: "#f5f5f5",
+        overflowX: "hidden", 
+        overflowY: "auto",  
       }}
     >
       {/* Header */}
@@ -102,19 +104,19 @@ function Notificacoes() {
 
       {/* Main Content */}
       <Box sx={{ flexGrow: 1, width: "100%" }}>
-      <Box mb={3} mt={5}>
-            <Typography
-              variant="h4"
-              display="flex"
-              justifyContent="center"
-              sx={{
-                textDecoration: 'underline',
-                textDecorationColor: '#fdd835',
-              }}
-            >
-              Notificação & Alerta
-            </Typography>
-          </Box>
+        <Box mb={3} mt={5}>
+          <Typography
+            variant="h4"
+            display="flex"
+            justifyContent="center"
+            sx={{
+              textDecoration: "underline",
+              textDecorationColor: "#fdd835",
+            }}
+          >
+            Notificação & Alerta
+          </Typography>
+        </Box>
         <div style={styles.calendarContainer}>
           <Calendar onChange={handleDateChange} value={selectedDate} />
         </div>
@@ -209,8 +211,8 @@ function Notificacoes() {
         </Typography>
         <Box
           sx={{
-            borderTop: '3px solid #fdd835', 
-            marginTop: '10px',
+            borderTop: "3px solid #fdd835",
+            marginTop: "10px",
           }}
         />
       </Box>
@@ -219,20 +221,6 @@ function Notificacoes() {
 }
 
 const styles = {
-  titleContainer: {
-    marginTop: "20px",
-    textAlign: "center",
-    borderBottom: "2px solid #FFD700",
-    paddingBottom: "10px",
-    width: "80%",
-    margin: "0 auto",
-  },
-  title: {
-    fontSize: "24px",
-    fontFamily: "serif",
-    color: "#333",
-    margin: 0,
-  },
   calendarContainer: {
     marginTop: "20px",
     display: "flex",

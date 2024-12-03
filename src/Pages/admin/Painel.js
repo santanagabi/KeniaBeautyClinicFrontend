@@ -37,12 +37,21 @@ function Painel() {
           overflowX: 'hidden',
         }}
       >
-        <img src={logo} alt="Logo" style={{ height: '60px', cursor: "pointer", marginLeft: '15px' }} 
-        onClick={() => navigate("/sobre-mim")} />
+        <img
+          src={logo}
+          alt="Logo"
+          style={{ height: '60px', cursor: 'pointer', marginLeft: '15px' }}
+          onClick={() => navigate('/sobre-mim')}
+        />
         <Box sx={{ display: 'flex', gap: '20px', marginLeft: '' }}>
           <Button
             onClick={() => navigate('/')}
-            sx={{ color: 'white', fontWeight: 'italic', '&:hover': { color: '#fdd835', }, }} >
+            sx={{
+              color: 'white',
+              fontWeight: 'italic',
+              '&:hover': { color: '#fdd835' },
+            }}
+          >
             Sair
           </Button>
         </Box>
@@ -50,145 +59,139 @@ function Painel() {
 
       {/* Conteúdo Principal */}
       <Container maxWidth="md" sx={{ mt: 1 }}>
-        <Typography variant="h3" component="h1" gutterBottom sx={{ textDecoration: 'underline', textDecorationColor: '#fdd835', textAlign: 'center' }}>
+        <Typography
+          variant="h3"
+          component="h1"
+          gutterBottom
+          sx={{
+            textDecoration: 'underline',
+            textDecorationColor: '#fdd835',
+            textAlign: 'center',
+          }}
+        >
           PAINEL DO ADMINISTRADOR
         </Typography>
 
-{/* Menu de Botões */}
-<Box
-  sx={{
-    display: 'grid',
-    gridTemplateColumns: 'repeat(3, 1fr)',
-    gap: '20px',
-    justifyItems: 'center',
-    mb: 5,
-  }}
->
-  <Button
-    variant="contained"
-    onClick={() => navigate('/criar-anamnese')}
-    sx={{
-      width: '200px',
-      height: '150px',
-      backgroundColor: '#333333',
-      color: '#ffffff',
-      '&:hover': {
-        backgroundColor: '#555555',
-      },
-    }}
-  >
-    Ficha de Anamnese
-  </Button>
-  <Button
-    variant="contained"
-    onClick={() => navigate('/prontuarios')}
-    sx={{
-      width: '200px',
-      height: '150px',
-      backgroundColor: '#333333',
-      color: '#ffffff',
-      '&:hover': {
-        backgroundColor: '#555555',
-      },
-    }}
-  >
-    Prontuários
-  </Button>
-  <Button
-    variant="contained"
-    onClick={() => navigate('/HistoricoMedico')}
-    sx={{
-      width: '200px',
-      height: '150px',
-      backgroundColor: '#333333',
-      color: '#ffffff',
-      '&:hover': {
-        backgroundColor: '#555555',
-      },
-    }}
-  >
-    Histórico Médico
-  </Button>
-  <Button
-    variant="contained"
-    onClick={() => navigate('/Notificaçoes')}
-    sx={{
-      width: '200px',
-      height: '150px',
-      backgroundColor: '#333333',
-      color: '#ffffff',
-      '&:hover': {
-        backgroundColor: '#555555',
-      },
-    }}
-  >
-    Notificações
-  </Button>
-  <Button
-    variant="contained"
-    onClick={() => navigate('/assinatura-digital')}
-    sx={{
-      width: '200px',
-      height: '150px',
-      backgroundColor: '#333333',
-      color: '#ffffff',
-      '&:hover': {
-        backgroundColor: '#555555',
-      },
-    }}
-  >
-    Assinatura Digital
-  </Button>
-  <Button
-    variant="contained"
-    onClick={() => navigate('/estoque')}
-    sx={{
-      width: '200px',
-      height: '150px',
-      backgroundColor: '#333333',
-      color: '#ffffff',
-      '&:hover': {
-        backgroundColor: '#555555',
-      },
-    }}
-  >
-    Controle de Estoque
-  </Button>
-  <Button
-    variant="contained"
-    onClick={() => navigate('/financeiro')}
-    sx={{
-      width: '200px',
-      height: '150px',
-      backgroundColor: '#333333',
-      color: '#ffffff',
-      '&:hover': {
-        backgroundColor: '#555555',
-      },
-    }}
-  >
-    Controle Financeiro
-  </Button>
-</Box>
+        {/* Menu de Botões */}
+        <Box
+          sx={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3, 1fr)',
+            gap: '20px',
+            justifyItems: 'center',
+            mb: 5,
+          }}
+        >
+          <Button
+            variant="contained"
+            onClick={() => navigate('/criar-anamnese')}
+            sx={{
+              width: '200px',
+              height: '150px',
+              backgroundColor: '#333333',
+              color: '#ffffff',
+              '&:hover': {
+                backgroundColor: '#555555',
+              },
+            }}
+          >
+            Ficha de Anamnese
+          </Button>
+          <Button
+            variant="contained"
+            onClick={() => navigate('/prontuarios')}
+            sx={{
+              width: '200px',
+              height: '150px',
+              backgroundColor: '#333333',
+              color: '#ffffff',
+              '&:hover': {
+                backgroundColor: '#555555',
+              },
+            }}
+          >
+            Prontuários
+          </Button>
 
+          <Button
+            variant="contained"
+            onClick={() => navigate('/Notificaçoes')}
+            sx={{
+              width: '200px',
+              height: '150px',
+              backgroundColor: '#333333',
+              color: '#ffffff',
+              '&:hover': {
+                backgroundColor: '#555555',
+              },
+            }}
+          >
+            Notificações
+          </Button>
+          <Button
+            variant="contained"
+            onClick={() => navigate('/assinatura-digital')}
+            sx={{
+              width: '200px',
+              height: '150px',
+              backgroundColor: '#333333',
+              color: '#ffffff',
+              '&:hover': {
+                backgroundColor: '#555555',
+              },
+            }}
+          >
+            Assinatura Digital
+          </Button>
+          <Button
+            variant="contained"
+            onClick={() => navigate('/estoque')}
+            sx={{
+              width: '200px',
+              height: '150px',
+              backgroundColor: '#333333',
+              color: '#ffffff',
+              '&:hover': {
+                backgroundColor: '#555555',
+              },
+            }}
+          >
+            Controle de Estoque
+          </Button>
+          <Button
+            variant="contained"
+            onClick={() => navigate('/financeiro')}
+            sx={{
+              width: '200px',
+              height: '150px',
+              backgroundColor: '#333333',
+              color: '#ffffff',
+              '&:hover': {
+                backgroundColor: '#555555',
+              },
+            }}
+          >
+            Controle Financeiro
+          </Button>
+        </Box>
       </Container>
 
       {/* Footer */}
       <Box
         sx={{
           backgroundColor: '#3f3f3f',
-          padding: '10px 0', 
+          padding: '10px 0',
           textAlign: 'center',
           width: '100%',
           position: 'relative',
         }}
       >
         <Typography variant="body2" color="white">
-        © 2024 Todos os direitos reservados Kenia Alves
+          © 2024 Todos os direitos reservados Kenia Alves
         </Typography>
         <Box
           sx={{
-            borderTop: '3px solid #fdd835', 
+            borderTop: '3px solid #fdd835',
             marginTop: '10px',
           }}
         />

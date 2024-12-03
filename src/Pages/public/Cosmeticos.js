@@ -15,16 +15,16 @@ const produtos = [
   {
     id: 1,
     src: produto1,
-    name: "Kit Glance Care",
+    name: "Nano Complex SERUM",
     description:
-      "Sabonete Líquido Facial, Esfoliante em Gel, Demaquilante Facial",
+      "Sérum facial concentrado regulador de oleosidade e acne e fortalecedor da microbiota.",
   },
   {
     id: 2,
     src: produto2,
-    name: "Henna para Sobrancelha Glance",
+    name: "Candy Colors Gloss",
     description:
-      "A Glance Henna tem como principal ingrediente o extrato da planta Lawsonia inermis (henna). É um produto de fácil aplicação e excelente durabilidade e fixação.",
+      "Para quem deseja lábios brilhosos e sofisticados.",
   },
 ];
 
@@ -151,90 +151,97 @@ const Cosmeticos = () => {
 
         <Grid container spacing={4}>
           <Grid item xs={12}>
-            <Box display="flex" justifyContent="center">
-              <Carousel
-                showArrows={true}
-                showThumbs={false}
-                showStatus={false}
-                infiniteLoop={true}
-                autoPlay={false}
-                dynamicHeight={true}
-              >
-                {produtos.map((produto) => (
-                  <Box
-                    key={produto.id}
-                    sx={{
-                      position: "relative",
-                      width: "300px",
-                      margin: "0 auto",
-                    }}
-                  >
-                    <img
-                      src={produto.src}
-                      alt={produto.name}
-                      style={{
-                        width: "100%",
-                        height: "400px",
-                        objectFit: "contain",
-                        borderRadius: "10px",
-                      }}
-                    />
-                    <Box
-                      sx={{
-                        position: "absolute",
-                        top: 0,
-                        left: "100%",
-                        width: "200px",
-                        height: "100%",
-                        backgroundColor: "rgba(0, 0, 0, 0.6)",
-                        display: "flex",
-                        flexDirection: "column",
-                        justifyContent: "center",
-                        alignItems: "center",
-                        opacity: 0,
-                        transition: "opacity 0.3s ease",
-                        "&:hover": {
-                          opacity: 1,
-                        },
-                      }}
-                    >
-                      <Typography
-                        variant="h5"
-                        sx={{
-                          color: "#fff",
-                          marginBottom: "10px",
-                          textAlign: "center",
-                        }}
-                      >
-                        {produto.name}
-                      </Typography>
-                      <Typography
-                        variant="body1"
-                        sx={{
-                          color: "#fff",
-                          marginBottom: "20px",
-                          textAlign: "center",
-                        }}
-                      >
-                        {produto.description}
-                      </Typography>
-                      <Link to="/contato" style={{ textDecoration: "none" }}>
-                        <Button
-                          variant="contained"
-                          sx={{
-                            backgroundColor: "#fdd835",
-                            color: "#333",
-                            "&:hover": { backgroundColor: "#e0b700" },
-                          }}
-                        >
-                          Tenho Interesse
-                        </Button>
-                      </Link>
-                    </Box>
-                  </Box>
-                ))}
-              </Carousel>
-            </Box>
+          <Box
+  display="flex"
+  justifyContent="center"
+  sx={{
+    marginLeft: "-200px", // Move o conteúdo ligeiramente para a esquerda
+  }}
+>
+  <Carousel
+    showArrows={true}
+    showThumbs={false}
+    showStatus={false}
+    infiniteLoop={true}
+    autoPlay={false}
+    dynamicHeight={true}
+  >
+    {produtos.map((produto) => (
+      <Box
+        key={produto.id}
+        sx={{
+          position: "relative",
+          width: "300px",
+          margin: "0 auto",
+        }}
+      >
+        <img
+          src={produto.src}
+          alt={produto.name}
+          style={{
+            width: "100%",
+            height: "400px",
+            objectFit: "contain",
+            borderRadius: "10px",
+          }}
+        />
+        <Box
+          sx={{
+            position: "absolute",
+            top: 0,
+            left: "100%",
+            width: "200px",
+            height: "100%",
+            backgroundColor: "rgba(0, 0, 0, 0.6)",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            opacity: 0,
+            transition: "opacity 0.3s ease",
+            "&:hover": {
+              opacity: 1,
+            },
+          }}
+        >
+          <Typography
+            variant="h5"
+            sx={{
+              color: "#fff",
+              marginBottom: "10px",
+              textAlign: "center",
+            }}
+          >
+            {produto.name}
+          </Typography>
+          <Typography
+            variant="body1"
+            sx={{
+              color: "#fff",
+              marginBottom: "20px",
+              textAlign: "center",
+            }}
+          >
+            {produto.description}
+          </Typography>
+          <Link to="/contato" style={{ textDecoration: "none" }}>
+            <Button
+              variant="contained"
+              sx={{
+                backgroundColor: "#fdd835",
+                color: "#333",
+                "&:hover": { backgroundColor: "#e0b700" },
+              }}
+            >
+              Tenho Interesse
+            </Button>
+          </Link>
+        </Box>
+      </Box>
+    ))}
+  </Carousel>
+</Box>
+
           </Grid>
         </Grid>
       </Container>

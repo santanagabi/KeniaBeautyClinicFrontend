@@ -116,7 +116,7 @@ const Estoque = () => {
 
       <Container maxWidth="md">
         <Typography variant="h4" display="flex" justifyContent="center" sx={{ textDecoration: 'underline', textDecorationColor: '#fdd835' }}>
-          GESTÃO DE ESTOQUE
+        Gestão de Estoque
         </Typography>
 
         <Paper elevation={3} sx={{ padding: 3, marginBottom: 3 }}>

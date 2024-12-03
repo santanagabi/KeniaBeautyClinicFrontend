@@ -39,7 +39,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Navigate to="/login" />} />
+        <Route path="/" element={<Navigate to="/sobre-mim" />} />
         <Route path="/login" element={<Login />} />
         <Route path="/painel" element={<Painel />} />
         <Route path="/register" element={<Register />} />
@@ -55,6 +55,11 @@ function App() {
           element={<DetalhesAnamnese />}
         />{' '}
         {}
+        <Route
+          path="/HistoricoMedico/:pacienteNome/:anamneseId"
+          element={<HistoricoMedico />}
+        />{' '}
+        {}
         <Route path="/financeiro" element={<DashboardFinanceiro />} />
         <Route path="/gastos" element={<GastosFinanceiro />} />
         <Route path="/ganhos" element={<GanhosFinanceiro />} />
@@ -64,7 +69,7 @@ function App() {
         <Route path="/produtos" element={<Produtos />} />
         <Route path="/estoque" element={<Estoque />} />
         <Route path="/assinatura-digital" element={<AssinaturaDigital />} />
-        <Route path="/HistoricoMedico" element={<HistoricoMedico />} />
+        {/* <Route path="/HistoricoMedico" element={<HistoricoMedico />} /> */}
         <Route path="/Notificaçoes" element={<Notificaçoes />} />
         {/* Tudo foi substituido pelo relatorio */}
         {/* <Route path="/dashboard-estoque" element={<DashboardEstoque />} /> */}

@@ -266,7 +266,7 @@ function ContactPage() {
         <Container maxWidth="sm">
           <Paper
             elevation={3}
-            sx={{ padding: "40px", borderRadius: "10px", width: "100%" }}
+            sx={{ padding: "40px", borderRadius: "10px", width: "100%", marginLeft: "-40px", }}
           >
             <Typography variant="h4" align="center" gutterBottom>
               FORMULÁRIO DE INTERESSE

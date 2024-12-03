@@ -12,7 +12,7 @@ import espaco5 from "../images/espaco/espaco-5.jpg";
 import espaco6 from "../images/espaco/espaco-6.jpg";
 import espaco7 from "../images/espaco/espaco-7.jpg";
 import { Carousel } from 'react-responsive-carousel';
-import 'react-responsive-carousel/lib/styles/carousel.min.css'; // Adicione o estilo do carrossel
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 function LocationPage() {
   const navigate = useNavigate();
@@ -131,64 +131,72 @@ function LocationPage() {
         </Box>
       </Box>
 
-      <Container maxWidth="md">
-  <Grid container spacing={4} alignItems="center" justifyContent="center">
-    <Grid item xs={12} md={6} style={{ textAlign: "center" }}>
-    <Typography
-  variant="h3"
-  component="h1"
-  gutterBottom
-  sx={{
-    textDecoration: "underline",
-    textDecorationColor: "#fdd835",
-    textAlign: "center",
-    width: "200%",  // Garantir que ocupe toda a largura disponível
-  }}
->
-  ESPAÇO
-</Typography>
+      <Container maxWidth="md" sx={{ my: 4 }}>
+        <Typography
+          variant="h3"
+          component="h1"
+          gutterBottom
+          sx={{
+            textDecoration: "underline",
+            textDecorationColor: "#fdd835",
+            textAlign: "center",
+            mb: 4,
+            width: "100%"
+          }}
+        >
+          ESPAÇO
+        </Typography>
 
-<Carousel
-  showArrows={true}
-  showThumbs={false}
-  infiniteLoop
-  useKeyboardArrows
-  autoPlay
-  interval={3000}
-  transitionTime={500}
-  stopOnHover={true}
-  dynamicHeight={true}
-  style={{ 
-    width: "100%",  // Para que o carrossel ocupe 100% da largura do container
-    maxWidth: "100%", // Para garantir que não ultrapasse a largura do conteúdo
-  }}
->
-  {images.map((image) => (
-    <div key={image.id}>
-      <img src={image.src} alt={image.alt} style={{ width: "100%", height: "auto" }} />
-    </div>
-  ))}
-</Carousel>
+        <Grid container spacing={4} sx={{ height: '500px' }}>
+          <Grid item xs={12} md={6} sx={{ height: '100%' }}>
+            <Box sx={{ height: '100%' }}>
+              <Carousel
+                showArrows={true}
+                showThumbs={false}
+                infiniteLoop
+                useKeyboardArrows
+                autoPlay
+                interval={3000}
+                transitionTime={500}
+                stopOnHover={true}
+                dynamicHeight={false}
+                style={{ height: '100%' }}
+              >
+                {images.map((image) => (
+                  <div key={image.id} style={{ height: '500px' }}>
+                    <img 
+                      src={image.src} 
+                      alt={image.alt} 
+                      style={{ 
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover'
+                      }} 
+                    />
+                  </div>
+                ))}
+              </Carousel>
+            </Box>
+          </Grid>
 
-    </Grid>
-
-    <Grid item xs={12} md={6}>
-      <div className="google-map-code">
-        <iframe
-          title="Localização da Clínica Kenia Alves"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d234.48550005473905!2d-43.996565912233585!3d-19.892015954297303!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa69134a5ad5dc5%3A0xf1b20ad87c059db1!2sRua%20Romualdo%20Lopes%20Can%C3%A7ado%2C%2019%20-%20Castelo%2C%20Belo%20Horizonte%20-%20MG%2C%2030840-460!5e0!3m2!1spt-BR!2sbr!4v1729814110411!5m2!1spt-BR!2sbr"
-          width="100%"
-          height="480"
-          frameBorder="0"
-          style={{ border: 0 }}
-          allowFullScreen=""
-          aria-hidden="false"
-          tabIndex="0"
-        />
-      </div>
-    </Grid>
-  </Grid>
-</Container>
+          <Grid item xs={12} md={6} sx={{ height: '100%' }}>
+            <Box sx={{ height: '500px' }}>
+              <iframe
+                title="Localização da Clínica Kenia Alves"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d234.48550005473905!2d-43.996565912233585!3d-19.892015954297303!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa69134a5ad5dc5%3A0xf1b20ad87c059db1!2sRua%20Romualdo%20Lopes%20Can%C3%A7ado%2C%2019%20-%20Castelo%2C%20Belo%20Horizonte%20-%20MG%2C%2030840-460!5e0!3m2!1spt-BR!2sbr!4v1729814110411!5m2!1spt-BR!2sbr"
+                style={{
+                  border: 0,
+                  width: '100%',
+                  height: '100%'
+                }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </Box>
+          </Grid>
+        </Grid>
+      </Container>
 
       {/* Footer */}
       <Box

@@ -45,7 +45,6 @@ function Incomes() {
     setAmount(formatCurrency(e.target.value));
   };
 
-  // Ajuste da função de adicionar ganho
   const addIncome = async () => {
     console.log(amount);
     const replacedAmount = parseFloat(amount.replace('R$', ''));
@@ -230,7 +229,13 @@ function Incomes() {
                   color="primary"
                   fullWidth
                   onClick={addIncome}
-                  sx={{ borderRadius: '5px', mt: 2 }}
+                  sx={{ borderRadius: '5px', mt: 2, 
+                    backgroundColor: '#333333',
+                    color: '#ffffff',
+                    fontWeight: 'bold',
+                    '&:hover': {
+                      backgroundColor: '#555555',
+                    }, }}
                 >
                   Adicionar Ganho
                 </Button>
@@ -248,6 +253,27 @@ function Incomes() {
           </Grid>
         </Grid>
       </Container>
+
+      {/* Footer */}
+      <Box
+        sx={{
+          backgroundColor: '#3f3f3f',
+          padding: '10px 0',
+          textAlign: 'center',
+          width: '100%',
+          position: 'relative',
+        }}
+      >
+        <Typography variant="body2" color="white">
+          © 2024 Todos os direitos reservados Kenia Alves
+        </Typography>
+        <Box
+          sx={{
+            borderTop: '3px solid #fdd835',
+            marginTop: '10px',
+          }}
+        />
+      </Box>
     </Box>
   );
 }

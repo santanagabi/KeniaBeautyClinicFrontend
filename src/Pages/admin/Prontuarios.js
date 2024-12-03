@@ -354,7 +354,16 @@ const Prontuarios = () => {
   };
 
   return (
-    <>
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        minHeight: '100vh',
+        backgroundColor: '#f5f5f5',
+        overflowX: "hidden", 
+        overflowY: "auto",  
+      }}
+    >
       {/* Header */}
       <Box
         sx={{
@@ -375,9 +384,8 @@ const Prontuarios = () => {
         />
       </Box>
 
-      <Container sx={{ mt: 10, mb: 5 }}>
+      <Container sx={{ mt: 10, mb: 5, flex: '1 0 auto' }}>
         <Grid container spacing={2}>
-          {/* Lista de Anamneses */}
           <Grid item xs={12} md={4}>
             <Card sx={{ padding: 2 }}>
               <Typography variant="h6" gutterBottom>
@@ -402,7 +410,6 @@ const Prontuarios = () => {
             </Card>
           </Grid>
 
-          {/* Detalhes da Anamnese Selecionada */}
           <Grid item xs={12} md={8}>
             {anamneseSelecionada ? (
               <Card sx={{ padding: 2 }}>
@@ -421,12 +428,21 @@ const Prontuarios = () => {
                     <strong>CPF:</strong> {anamneseSelecionada.cpf}
                   </Typography>
 
-                  {/* Botões com ícones */}
                   <Box sx={{ mt: 2 }}>
                     <Button
                       variant="contained"
                       color="primary"
-                      sx={{ mr: 2 }}
+                      sx={{
+                        mr: 2,
+                        backgroundColor: '#333333',
+                        color: '#ffffff',
+                        margin: '10px',
+
+                        fontWeight: 'bold',
+                        '&:hover': {
+                          backgroundColor: '#555555',
+                        },
+                      }}
                       startIcon={<ContentPasteIcon />}
                       onClick={() =>
                         navigate(`/detalhes-anamnese/${anamneseSelecionada.id}`)
@@ -435,10 +451,42 @@ const Prontuarios = () => {
                       Visualizar Detalhes da Anamnese
                     </Button>
 
-                    {/* Botão para gerar PDF */}
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      sx={{
+                        mr: 2,
+                        backgroundColor: '#333333',
+                        color: '#ffffff',
+                        fontWeight: 'bold',
+                        margin: '10px',
+                        '&:hover': {
+                          backgroundColor: '#555555',
+                        },
+                      }}
+                      startIcon={<ContentPasteIcon />}
+                      onClick={() =>
+                        navigate(
+                          `/HistoricoMedico/${anamneseSelecionada.pacienteNome}/${anamneseSelecionada.id}`
+                        )
+                      }
+                    >
+                      Visualizar Historico Medico
+                    </Button>
+
                     <Button
                       variant="contained"
                       color="secondary"
+                      sx={{
+                        backgroundColor: '#333333',
+                        color: '#ffffff',
+                        fontWeight: 'bold',
+                        margin: '10px',
+
+                        '&:hover': {
+                          backgroundColor: '#555555',
+                        },
+                      }}
                       startIcon={<InventoryIcon />}
                       onClick={() => gerarPDF(anamneseSelecionada)}
                     >
@@ -462,6 +510,8 @@ const Prontuarios = () => {
           backgroundColor: '#3f3f3f',
           padding: '15px 0',
           textAlign: 'center',
+          width: '100%',
+          mt: 'auto',
         }}
       >
         <Typography variant="body2" color="white">
@@ -474,7 +524,7 @@ const Prontuarios = () => {
           }}
         />
       </Box>
-    </>
+    </Box>
   );
 };
 
