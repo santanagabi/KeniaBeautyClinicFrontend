@@ -15,6 +15,7 @@ import {
  
 } from '@mui/material';
 
+const API_URL = process.env.REACT_APP_API_URL;
 
 const AnamneseForm = ({ pacienteId }) => {
   const [formData, setFormData] = useState({
@@ -145,7 +146,7 @@ const AnamneseForm = ({ pacienteId }) => {
     if (pacienteId) {
       // Fetch existing data if editing
       axios
-        .get(`http://localhost:3000/api/anamnese/${pacienteId}`)
+        .get(`${API_URL}/api/anamnese/${pacienteId}`)
         .then((response) => setFormData(response.data))
         .catch((err) => console.error('Erro ao buscar anamnese:', err));
     }
@@ -198,14 +199,14 @@ const AnamneseForm = ({ pacienteId }) => {
       if (pacienteId) {
         // Edit anamnese
         response = await axios.put(
-          `http://localhost:3000/api/editar-anamnese/${pacienteId}`,
+          `${API_URL}/api/editar-anamnese/${pacienteId}`,
           anamneseData,
           { headers: { 'Content-Type': 'application/json' } }
         );
       } else {
         // Create a new anamnese
         response = await axios.post(
-          'http://localhost:3000/api/criar-anamnese',
+          `${API_URL}/api/criar-anamnese`,
           anamneseData,
           { headers: { 'Content-Type': 'application/json' } }
         );
@@ -224,7 +225,7 @@ const AnamneseForm = ({ pacienteId }) => {
     console.log('Editar foi clicado!');
     try {
       const response = await axios.put(
-        `http://localhost:3000/api/editar-anamnese/${id}`,
+        `${API_URL}/api/editar-anamnese/${id}`,
         updatedData,
         { headers: { 'Content-Type': 'application/json' } }
       );

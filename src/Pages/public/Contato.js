@@ -19,6 +19,8 @@ import contatoFoto from "../images/Kenia-contato.jpg";
 import { Instagram, Email, WhatsApp, Lock } from "@mui/icons-material";
 import axios from "axios";
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 function ContactPage() {
   const navigate = useNavigate();
   const [sendFormSucess, setSendFormSucess] = useState(false);
@@ -42,7 +44,7 @@ function ContactPage() {
     e.preventDefault();
     try {
       await axios.post(
-        "http://localhost:3000/api/enviar-email",
+        `${API_URL}/api/enviar-email`,
         formData
       );
       setSendFormSucess(true);
@@ -208,7 +210,7 @@ function ContactPage() {
               align="center"
               gutterBottom
             >
-              BIOMÉDICA ESTETA | CRMB 19364 ESPCIALISTA EM EMBELEZAMENTO FACIL
+              BIOMÉDICA ESTETA | CRMB 19364 ESPECIALISTA EM EMBELEZAMENTO FACIL
               💉 BOTOX | PREENCHIMENTO | ESPECIALISTA EM LÁBIOS | BELO HORIZONTE
               - MG{" "}
             </Typography>

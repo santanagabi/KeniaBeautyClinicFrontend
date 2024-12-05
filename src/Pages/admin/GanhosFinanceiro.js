@@ -22,6 +22,8 @@ import logo from '../images/logo.png';
 import Cookies from 'js-cookie'; // Importa o Cookies
 import axios from 'axios';
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 function Incomes() {
   const [procedure, setProcedure] = useState('');
   const [title, setTitle] = useState('');
@@ -58,7 +60,7 @@ function Incomes() {
       }
 
       const response = await axios.post(
-        'http://localhost:3000/api/financeiro/transacoes/ganho',
+        `${API_URL}/api/financeiro/transacoes/ganho`,
         { descricao: procedure, valor: replacedAmount, data: date },
         {
           headers: {

@@ -16,6 +16,8 @@ import Cookies from 'js-cookie'; // Para pegar o token
 import logo from '../images/logo.png';
 import DeleteIcon from '@mui/icons-material/Delete'; // Ícone de lixeira
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 function ViewTransactions() {
   const navigate = useNavigate();
   const [transacoes, setTransacoes] = useState([]);
@@ -33,7 +35,7 @@ function ViewTransactions() {
       }
 
       const response = await fetch(
-        'http://localhost:3000/api/financeiro/transacoes',
+        `${API_URL}/api/financeiro/transacoes`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -72,7 +74,7 @@ function ViewTransactions() {
       }
 
       const response = await fetch(
-        `http://localhost:3000/api/financeiro/transacoes/${id}`,
+        `${API_URL}/api/financeiro/transacoes/${id}`,
         {
           method: 'DELETE',
           headers: {

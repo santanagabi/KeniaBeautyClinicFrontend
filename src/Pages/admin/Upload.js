@@ -4,6 +4,8 @@ import logo from "../images/logo.png";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 function Upload() {
   const navigate = useNavigate();
   const [files, setFiles] = useState({
@@ -33,7 +35,7 @@ function Upload() {
 
     try {
       // Faz o upload para o backend
-      await axios.post("http://localhost:3000/api/upload", formData, {
+      await axios.post(`${API_URL}/api/upload`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

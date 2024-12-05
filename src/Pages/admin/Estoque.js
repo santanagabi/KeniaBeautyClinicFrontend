@@ -17,6 +17,8 @@ import {
 import { useNavigate } from 'react-router-dom';
 import logo from '../images/logo.png';
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 const Estoque = () => {
   const navigate = useNavigate();
   const [products, setProducts] = useState([]);
@@ -38,7 +40,7 @@ const Estoque = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/api/itens');
+      const response = await axios.get(`${API_URL}/api/itens`);
       setProducts(response.data);
     } catch (error) {
       console.error('Erro ao buscar produtos:', error);
@@ -47,7 +49,7 @@ const Estoque = () => {
 
   const extrairRelatorio = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/api/relatorio', {
+      const response = await axios.get(`${API_URL}/api/relatorio`, {
         responseType: 'blob',
       });
 
@@ -71,7 +73,7 @@ const Estoque = () => {
         quantidade: parseInt(quantidade),
         valorUnitario: parseFloat(valorUnitario.replace('R$', '').replace(',', '.')),
       };
-      const response = await axios.post('http://localhost:3000/api/itens', productData);
+      const response = await axios.post(`${API_URL}/api/itens`, productData);
       setProducts([...products, response.data]);
 
       setNome('');

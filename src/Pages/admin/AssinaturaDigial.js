@@ -11,6 +11,8 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import logo from '../images/logo.png';
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 function AssinaturaDigital() {
   const navigate = useNavigate();
   const [error, setError] = useState('');
@@ -51,7 +53,7 @@ function AssinaturaDigital() {
       formData.append('file', file);
 
       const uploadResponse = await axios.post(
-        `http://localhost:3000/api/d4sign/documents/upload`,
+        `${API_URL}/api/d4sign/documents/upload`,
         formData,
         {
           headers: {
@@ -74,7 +76,7 @@ function AssinaturaDigital() {
   const handleCreateSignerList = async () => {
     try {
       const uploadResponse = await axios.post(
-        `http://localhost:3000/api/d4sign/documents/${UUIDdocument}/createlist`,
+        `${API_URL}/api/d4sign/documents/${UUIDdocument}/createlist`,
         {
           signers,
         }
@@ -91,7 +93,7 @@ function AssinaturaDigital() {
   const handleSendForSignature = async () => {
     try {
       await axios.post(
-        `http://localhost:3000/api/d4sign/documents/${UUIDdocument}/sendtosigner`,
+        `${API_URL}/api/d4sign/documents/${UUIDdocument}/sendtosigner`,
         {
           message: mensagem,
           skip_email: 0,

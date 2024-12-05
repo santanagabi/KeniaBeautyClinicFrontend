@@ -6,6 +6,8 @@ import "react-calendar/dist/Calendar.css";
 import { useNavigate } from "react-router-dom";
 import logo from "../../images/logo.png";
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 function Notificacoes() {
   const navigate = useNavigate();
   const [lembretes, setLembretes] = useState([]);
@@ -17,7 +19,7 @@ function Notificacoes() {
     prioridade: "",
   });
 
-  const API_URL = "http://localhost:3000/api/lembretes";
+  const API_URL =  `${API_URL}/api/lembretes`;
 
   useEffect(() => {
     const fetchLembretes = async () => {

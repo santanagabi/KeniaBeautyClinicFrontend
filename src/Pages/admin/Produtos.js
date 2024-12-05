@@ -3,6 +3,8 @@ import { Box, Container, Paper, Typography, Button } from "@mui/material";
 import logo from "../images/logo.png";
 import { useNavigate } from 'react-router-dom';
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 const Produtos = () => {
   const navigate = useNavigate();
   const [produtos, setProdutos] = useState([]);
@@ -14,7 +16,7 @@ const Produtos = () => {
 
   const fetchProdutos = async () => {
     try {
-      const response = await fetch("http://localhost:3000/api/produtos");
+      const response = await fetch(`${API_URL}/api/produtos`);
       const data = await response.json();
       setProdutos(data);
     } catch (error) {
@@ -89,7 +91,7 @@ const Produtos = () => {
     try {
       const updatedProdutos = produtos.map(async (produto) => {
         if (produto.editMode) {
-          await fetch(`http://localhost:3000/api/produtos/${produto._id}`, {
+          await fetch(`${API_URL}/api/produtos/${produto._id}`, {
             method: "PUT",
             headers: {
               "Content-Type": "application/json",
@@ -113,7 +115,7 @@ const Produtos = () => {
     const newProduct = { nome: "Novo Produto", quantidade: "0" };
 
     try {
-      const response = await fetch("http://localhost:3000/api/produtos", {
+      const response = await fetch(`${API_URL}/api/produtos`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -129,7 +131,7 @@ const Produtos = () => {
 
   const deleteProduto = async (id) => {
     try {
-      await fetch(`http://localhost:3000/api/produtos/${id}`, {
+      await fetch(`${API_URL}/api/produtos/${id}`, {
         method: "DELETE",
       });
       setProdutos(produtos.filter((produto) => produto._id !== id));

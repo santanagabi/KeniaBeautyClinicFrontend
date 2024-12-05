@@ -13,6 +13,8 @@ import { Link, useNavigate } from 'react-router-dom'; // Importa o Link para nav
 import Cookies from 'js-cookie'; // Importa o Cookies
 import logo from '../images/logo.png';
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 function Dashboard() {
   const [transacoes, setTransacoes] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -42,7 +44,7 @@ function Dashboard() {
       }
 
       const response = await fetch(
-        'http://localhost:3000/api/financeiro/transacoes',
+        `${API_URL}/api/financeiro/transacoes`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

@@ -22,6 +22,8 @@ import logo from '../images/logo.png';
 import Cookies from 'js-cookie'; // Importa o Cookies
 import axios from 'axios';
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 function Expenses() {
   const [procedure, setProcedure] = useState('');
   const [title, setTitle] = useState('');
@@ -57,7 +59,7 @@ function Expenses() {
       }
 
       const response = await axios.post(
-        'http://localhost:3000/api/financeiro/transacoes/gasto', // Alterado para endpoint de 'gasto'
+        `${API_URL}/api/financeiro/transacoes/gasto`, // Alterado para endpoint de 'gasto'
         { descricao: procedure, valor: replacedAmount, data: date },
         {
           headers: {

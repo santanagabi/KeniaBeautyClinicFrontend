@@ -11,6 +11,8 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import logo from '../images/logo.png';
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 function RegisterPatient() {
   const [formData, setFormData] = useState({
     nomeCompleto: '',
@@ -33,7 +35,7 @@ function RegisterPatient() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        'http://localhost:3000/api/cadastro-paciente',
+        `${API_URL}/api/cadastro-paciente`,
         formData
       );
       console.log('Paciente cadastrado:', response.data);

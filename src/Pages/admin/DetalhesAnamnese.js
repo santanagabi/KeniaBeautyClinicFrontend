@@ -19,6 +19,8 @@ import InventoryIcon from '@mui/icons-material/Inventory';
 import axios from 'axios';
 import logo from '../images/logo.png';
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 const DetalhesAnamnese = () => {
   const { id } = useParams(); // Captura o ID da anamnese na URL
   const [anamnese, setAnamnese] = useState(null);
@@ -30,7 +32,7 @@ const DetalhesAnamnese = () => {
   const fetchAnamnese = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/api/anamnese/${id}`
+        `${API_URL}/api/anamnese/${id}`
       );
       setAnamnese(response.data.anamnese);
       setOriginalAnamnese(response.data.anamnese); // Armazena os dados originais
@@ -55,7 +57,7 @@ const DetalhesAnamnese = () => {
     try {
       // Enviar os dados atualizados para a API
       await axios.put(
-        `http://localhost:3000/api/editar-anamnese/${id}`,
+        `${API_URL}/api/editar-anamnese/${id}`,
         anamnese
       );
       setEditMode(false);

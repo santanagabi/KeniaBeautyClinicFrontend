@@ -14,6 +14,8 @@ import axios from 'axios';
 import logo from '../images/logo.png';
 import imageCompression from 'browser-image-compression';
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 const HistoricoMedico = ({ pacienteId }) => {
   const [historico, setHistorico] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -38,7 +40,7 @@ const HistoricoMedico = ({ pacienteId }) => {
   const fetchHistorico = useCallback(async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/api/historico-medico/${pacienteNome}`
+        `${API_URL}/api/historico-medico/${pacienteNome}`
       );
       setHistorico(response.data);
       setFormData({
@@ -75,7 +77,7 @@ const HistoricoMedico = ({ pacienteId }) => {
       let response;
       if (historico) {
         response = await axios.put(
-          `http://localhost:3000/api/historico-medico/${historico.id}`,
+          `${API_URL}/api/historico-medico/${historico.id}`,
           formDataToSend,
           {
             headers: {
@@ -85,7 +87,7 @@ const HistoricoMedico = ({ pacienteId }) => {
         );
       } else {
         response = await axios.post(
-          'http://localhost:3000/api/historico-medico',
+          `${API_URL}/api/historico-medico`,
           formDataToSend,
           {
             headers: {
@@ -231,7 +233,7 @@ const HistoricoMedico = ({ pacienteId }) => {
               ) : (
                 historico && historico.fotosAntes && (
                   <img
-                    src={`http://localhost:3000/uploads/${historico.fotosAntes.split('/').pop()}`}  // Usando a URL da foto da API
+                    src={`${API_URL}/uploads/${historico.fotosAntes.split('/').pop()}`}  // Usando a URL da foto da API
                     alt="Foto Antes"
                     style={{ width: '100%', maxWidth: '200px', marginBottom: '20px' }}
                   />
@@ -250,7 +252,7 @@ const HistoricoMedico = ({ pacienteId }) => {
               ) : (
                 historico && historico.fotosDepois && (
                   <img
-                    src={`http://localhost:3000/uploads/${historico.fotosDepois.split('/').pop()}`}  // Usando a URL da foto da API
+                    src={`${API_URL}/uploads/${historico.fotosDepois.split('/').pop()}`}  // Usando a URL da foto da API
                     alt="Foto Depois"
                     style={{ width: '100%', maxWidth: '200px', marginBottom: '20px' }}
                   />

@@ -15,6 +15,8 @@ import entrada from '../images/entrada.png';
 import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -26,7 +28,7 @@ function Login() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        'http://localhost:3000/login-administrador',
+        `${API_URL}/login-administrador`,
         {
           email,
           senha: password,

@@ -18,6 +18,8 @@ import logo from '../images/logo.png';
 import axios from 'axios';
 import { jsPDF } from 'jspdf'; // Importa o jsPDF
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 const Prontuarios = () => {
   const [anamneses, setAnamneses] = useState([]);
   const [anamneseSelecionada, setAnamneseSelecionada] = useState(null);
@@ -27,7 +29,7 @@ const Prontuarios = () => {
   const fetchAnamneses = async () => {
     try {
       const response = await axios.get(
-        'http://localhost:3000/api/listar-anamneses'
+        `${API_URL}/api/listar-anamneses`
       );
       setAnamneses(response.data.anamneses);
     } catch (error) {

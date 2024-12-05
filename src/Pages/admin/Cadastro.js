@@ -11,6 +11,8 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import logo from '../images/logo.png';
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 function Register() {
   const [formData, setFormData] = useState({
     nome: '',
@@ -33,7 +35,7 @@ function Register() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        'http://localhost:3000/cadastro-admnistrador',
+        `${API_URL}/cadastro-admnistrador`,
         formData
       );
       console.log('Usuário registrado:', response.data);
