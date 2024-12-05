@@ -15,7 +15,7 @@ import {
  
 } from '@mui/material';
 
-const API_URL = process.env.REACT_APP_API_URL;
+const API_URL =  "https://proj-clinica-estetica-api.onrender.com"
 
 const AnamneseForm = ({ pacienteId }) => {
   const [formData, setFormData] = useState({
