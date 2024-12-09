@@ -3,7 +3,7 @@ import { Box, Container, Paper, Typography, Button } from "@mui/material";
 import logo from "../images/logo.png";
 import { useNavigate } from 'react-router-dom';
 
-const API_URL = process.env.REACT_APP_API_URL;
+const API_URL = "https://proj-clinica-estetica-api.onrender.com"
 
 const Produtos = () => {
   const navigate = useNavigate();

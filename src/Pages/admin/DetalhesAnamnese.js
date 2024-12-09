@@ -19,7 +19,7 @@ import InventoryIcon from '@mui/icons-material/Inventory';
 import axios from 'axios';
 import logo from '../images/logo.png';
 
-const API_URL = process.env.REACT_APP_API_URL;
+const API_URL = "https://proj-clinica-estetica-api.onrender.com"
 
 const DetalhesAnamnese = () => {
   const { id } = useParams(); // Captura o ID da anamnese na URL

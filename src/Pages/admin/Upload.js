@@ -4,7 +4,7 @@ import logo from "../images/logo.png";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 
-const API_URL = process.env.REACT_APP_API_URL;
+const API_URL = "https://proj-clinica-estetica-api.onrender.com"
 
 function Upload() {
   const navigate = useNavigate();

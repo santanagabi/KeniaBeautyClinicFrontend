@@ -16,7 +16,7 @@ import Cookies from 'js-cookie'; // Para pegar o token
 import logo from '../images/logo.png';
 import DeleteIcon from '@mui/icons-material/Delete'; // Ícone de lixeira
 
-const API_URL = process.env.REACT_APP_API_URL;
+const API_URL = "https://proj-clinica-estetica-api.onrender.com"
 
 function ViewTransactions() {
   const navigate = useNavigate();
