@@ -18,7 +18,7 @@ import logo from '../images/logo.png';
 import axios from 'axios';
 import { jsPDF } from 'jspdf'; // Importa o jsPDF
 
-const API_URL = process.env.REACT_APP_API_URL;
+const API_URL =  "https://proj-clinica-estetica-api.onrender.com"
 
 const Prontuarios = () => {
   const [anamneses, setAnamneses] = useState([]);

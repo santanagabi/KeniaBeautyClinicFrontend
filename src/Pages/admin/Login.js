@@ -15,7 +15,7 @@ import entrada from '../images/entrada.png';
 import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
 
-const API_URL = process.env.REACT_APP_API_URL;
+const API_URL =  "https://proj-clinica-estetica-api.onrender.com"
 
 function Login() {
   const [email, setEmail] = useState('');
