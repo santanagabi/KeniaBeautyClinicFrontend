@@ -22,7 +22,7 @@ import logo from '../images/logo.png';
 import Cookies from 'js-cookie'; // Importa o Cookies
 import axios from 'axios';
 
-const API_URL =  "https://proj-clinica-estetica-api.onrender.com"
+const API_URL = process.env.REACT_APP_API_URL;
 
 function Incomes() {
   const [procedure, setProcedure] = useState('');
@@ -163,29 +163,98 @@ function Incomes() {
                     onChange={(e) => setProcedure(e.target.value)}
                     label="Procedimentos"
                   >
-                    <MenuItem value="Botox Full Face">Botox Full Face</MenuItem>
-                    <MenuItem value="Preenchimento Facial">
-                      Preenchimento Facial
+                    <MenuItem value="Acelerador Metabólico Sessão Avulsa">
+                      Acelerador Metabólico Sessão Avulsa
                     </MenuItem>
-                    <MenuItem value="Revitalização Facial e Labial">
-                      Revitalização Facial e Labial
+                    <MenuItem value="Acelerador Metabólico 5 Sessões">
+                      Acelerador Metabólico 5 Sessões
                     </MenuItem>
-                    <MenuItem value="Limpeza de Pele">Limpeza de Pele</MenuItem>
-                    <MenuItem value="Peeling">Peeling</MenuItem>
-                    <MenuItem value="Microagulhamento">
-                      Microagulhamento
+                    <MenuItem value="Acelerador Metabólico 10 Sessões">
+                      Acelerador Metabólico 10 Sessões
                     </MenuItem>
-                    <MenuItem value="Micropigmentação">
-                      Micropigmentação
+                    <MenuItem value="Bioestimulador">
+                      Bioestimulador
                     </MenuItem>
-                    <MenuItem value="Lipo de Papada">Lipo de Papada</MenuItem>
-                    <MenuItem value="Vasinhos">Vasinhos</MenuItem>
+                    <MenuItem value="Botox Full Face">
+                      Botox Full Face
+                    </MenuItem>
+                    <MenuItem value="Botox Com Retorno (Feminino)">
+                      Botox Com Retorno (Feminino)
+                    </MenuItem>
+                    <MenuItem value="Botox Com Retorno (Masculino)">
+                      Botox Com Retorno (Masculino)
+                    </MenuItem>
                     <MenuItem value="Depilação a Laser">
                       Depilação a Laser
                     </MenuItem>
-                    <MenuItem value="Lipo Enzimática">Lipo Enzimática</MenuItem>
-                    <MenuItem value="Acelerador Metabólico">
-                      Acelerador Metabólico
+                    <MenuItem value="Design Simples">
+                      Design Simples
+                    </MenuItem>
+                    <MenuItem value="Fio Liso Mono Par">
+                      Fio Liso Mono Par
+                    </MenuItem>
+                    <MenuItem value="Fio Filler Par">
+                      Fio Filler Par
+                    </MenuItem>
+                    <MenuItem value="Limpeza de Pele">
+                      Limpeza de Pele
+                    </MenuItem>
+                    <MenuItem value="Limpeza de Pele com Peeling de Diamante">
+                      Limpeza de Pele com Peeling de Diamante
+                    </MenuItem>
+                    <MenuItem value="Lipo de Papada Sessão Avulsa">
+                      Lipo de Papada Sessão Avulsa
+                    </MenuItem>
+                    <MenuItem value="Lipo de Papada 5 Sessões">
+                      Lipo de Papada 5 Sessões
+                    </MenuItem>
+                    <MenuItem value="Lipo Enzimática Sessão Avulsa">
+                      Lipo Enzimática Sessão Avulsa
+                    </MenuItem>
+                    <MenuItem value="Lipo Enzimática 5 Sessões">
+                      Lipo Enzimática 5 Sessões
+                    </MenuItem>
+                    <MenuItem value="Lipo Enzimática 10 Sessões">
+                      Lipo Enzimática 10 Sessões
+                    </MenuItem>
+                    <MenuItem value="Microagulhamento">
+                      Microagulhamento
+                    </MenuItem>
+                    <MenuItem value="Micropigmentação de Sobrancelhas (Retoque Incluso)">
+                      Micropigmentação de Sobrancelhas (Retoque Incluso)
+                    </MenuItem>
+                    <MenuItem value="Micropigmentação Labial (Retoque Incluso)">
+                      Micropigmentação Labial (Retoque Incluso)
+                    </MenuItem>
+                    <MenuItem value="Peeling Facial">
+                      Peeling Facial
+                    </MenuItem>
+                    <MenuItem value="Preenchimento de Bigode Chinês">
+                      Preenchimento de Bigode Chinês
+                    </MenuItem>
+                    <MenuItem value="Preenchimento de Olheira">
+                      Preenchimento de Olheira
+                    </MenuItem>
+                    <MenuItem value="Preenchimento de Malar">
+                      Preenchimento de Malar
+                    </MenuItem>
+                    <MenuItem value="Preenchimento de Labial">
+                      Preenchimento Labial
+                    </MenuItem>
+                    <MenuItem value="Preenchimento Mento (Queixo)">
+                      Preenchimento Mento (Queixo)
+                    </MenuItem>
+                    <MenuItem value="Vasinhos">
+                      Vasinhos
+                    </MenuItem>
+                    <MenuItem value="Terapia Capilar + Agulha (Sessão Avulsa)">
+                      Terapia Capilar + Agulha (Sessão Avulsa)
+                    </MenuItem>
+                    <MenuItem value="Terapia Capilar + Agulha (5 Sessões)">
+                      Terapia Capilar + Agulha (10 Sessões)
+                    </MenuItem>
+                    <MenuItem value="Terapia Capilar + Agulha (10 Sessões)">
+                      Terapia Capilar + Agulha (10 Sessões)
                     </MenuItem>
                     <MenuItem value="Tratamentos: Flacidez, Celulite e Estrias">
                       Tratamentos: Flacidez, Celulite e Estrias

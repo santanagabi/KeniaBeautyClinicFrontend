@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import Grid from '@mui/material/Grid';
 import FormControl from '@mui/material/FormControl';
 import Button from '@mui/material/Button';
@@ -12,10 +12,11 @@ import {
   FormControlLabel,
   Checkbox,
   Box,
- 
+  InputAdornment,
 } from '@mui/material';
+import InputMask from 'react-input-mask';
 
-const API_URL =  "https://proj-clinica-estetica-api.onrender.com"
+const API_URL = process.env.REACT_APP_API_URL;
 
 const AnamneseForm = ({ pacienteId }) => {
   const [formData, setFormData] = useState({
@@ -152,26 +153,39 @@ const AnamneseForm = ({ pacienteId }) => {
     }
   }, [pacienteId]);
 
+
   const handleChange = (e) => {
     const { name, type, value, checked } = e.target;
+    let newValue = type === 'checkbox' ? checked : value;
 
-    let newValue;
-    if (type === 'checkbox') {
-      newValue = checked;
-    } 
-    else if (name === "problemaGinecologico") {
-     
-      newValue = value === 'true' ? true : value === 'false' ? false : null;
-    }else if (name === 'vezesPorDia' || name === 'quantosFilhos' || name === 'idade') {
-      newValue = value ? parseInt(value, 10) : null;
-    } else if (name === 'peso' || name === 'altura') {
-      newValue = value ? parseFloat(value) : null;
-    }
-    else if (name === "filhos") {
-     
-      newValue = value === 'true';}
-       else {
-      newValue = value;
+    // Validações e formatações
+    switch (name) {
+      case 'idade':
+        newValue = newValue.replace(/\D/g, ''); // Permite apenas números
+        newValue = newValue > 0 ? parseInt(newValue, 10) : '';
+        break;
+      case 'cpf':
+        newValue = newValue.replace(/\D/g, '').slice(0, 11);
+        break;
+      case 'rg':
+        newValue = newValue.replace(/\D/g, '').slice(0, 9); // Ajuste o limite conforme necessário
+        break;
+      case 'telefone':
+        break; 
+      case 'peso':
+        newValue = newValue.replace(/[^0-9.]/g, '').slice(0, 5); // Permite números e ponto decimal, limita a 5 caracteres
+        break;
+      case 'altura':
+        newValue = newValue.replace(/[^0-9.]/g, '').slice(0, 4); // Permite números e ponto decimal, limita a 4 caracteres
+        break;
+        case 'quantosFilhos':
+        newValue = newValue.replace(/\D/g, '');
+        break;
+       case 'vezesPorDia':
+        newValue = newValue.replace(/\D/g, '');
+        break;
+      default:
+        break;
     }
 
     setFormData((prevData) => ({
@@ -179,6 +193,7 @@ const AnamneseForm = ({ pacienteId }) => {
       [name]: newValue,
     }));
   };
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -309,34 +324,43 @@ const AnamneseForm = ({ pacienteId }) => {
             name="endereco"
             value={formData.endereco}
             onChange={handleChange}
-          />
+            placeholder="Rua Exemplo, 123 - Bairro/Cidade"
+            />
         </Box>
         <Box mb={2}>
-          <TextField
-            fullWidth
-            label="CPF:"
-            name="cpf"
+          <InputMask
+            mask="999.999.999-99"
             value={formData.cpf}
             onChange={handleChange}
-          />
+          >
+            {() => (
+              <TextField
+                fullWidth
+                label="CPF"
+                name="cpf"
+              />
+            )}
+          </InputMask>
         </Box>
         <Box mb={2}>
-          <TextField
-            fullWidth
-            label="RG:"
-            name="rg"
+          <InputMask
+            mask="99.999.999-9" // Máscara para RG (adapte conforme necessário)
             value={formData.rg}
             onChange={handleChange}
-          />
+          >
+            {() => (
+              <TextField fullWidth label="RG" name="rg" />
+            )}
+          </InputMask>
         </Box>
         <Box mb={2}>
-          <TextField
-            fullWidth
-            label="Telefone"
-            name="telefone"
+          <InputMask
+            mask="(99) 99999-9999" // Máscara para telefone (adapte conforme necessário)
             value={formData.telefone}
             onChange={handleChange}
-          />
+          >
+            {() => <TextField fullWidth label="Telefone" name="telefone" />}
+          </InputMask>
         </Box>
         <Box mb={3}>
           <Typography variant="h4" display="flex" justifyContent="center">
@@ -353,14 +377,15 @@ const AnamneseForm = ({ pacienteId }) => {
           />
         </Box>
         <Box mb={2}>
-          <TextField
-            fullWidth
-            label="Qual a sua altura?"
-            name="altura"
-            value={formData.altura}
-            onChange={handleChange}
-          />
-        </Box>
+        <InputMask
+          mask="9.99"
+          value={formData.altura}
+          onChange={handleChange}
+          placeholder="Ex: 1.80"
+        >
+          {() => <TextField fullWidth label="Altura (m)" name="altura" />}
+        </InputMask>
+      </Box>
         <Box mb={2}>
           <FormControlLabel
             control={
@@ -879,13 +904,17 @@ const AnamneseForm = ({ pacienteId }) => {
           />
         </Grid>
         <Grid item xs={12}>
+        <Box mb={2}>
         <TextField
-          name="vezesPorDia"
-           type="number" 
-           value={formData.vezesPorDia || ''} 
-            onChange={handleChange} 
+          fullWidth
           label="Quantas vezes por Dia"
-          />
+          name="vezesPorDia"
+          type="number"
+          value={formData.vezesPorDia || ''}
+          onChange={handleChange}
+          inputProps={{ min: 0 }} // Impede valores negativos
+        />
+      </Box>
         </Grid>
         <Grid item xs={12}>
           <FormControlLabel
@@ -1223,15 +1252,17 @@ const AnamneseForm = ({ pacienteId }) => {
             label="Tem filhos?"
           />
 
-          <FormControl fullWidth margin="normal">
+<FormControl fullWidth margin="normal">
           <TextField
-           name="quantosFilhos"
-           type= "number" // Define o tipo como number
-           value={formData.quantosFilhos || ''} // Use '' para que o campo seja controlado
-           onChange={handleChange}
-           label="Quantos Filhos"
-           />
-          </FormControl>
+            label="Quantos Filhos"
+            name="quantosFilhos"
+            type="number"
+            value={formData.quantosFilhos || ''}
+            onChange={handleChange}
+            inputProps={{ min: 0 }} // Impede valores negativos
+          />
+        </FormControl>
+
 
           <FormControl fullWidth margin="normal">
             <TextField

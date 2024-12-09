@@ -165,6 +165,50 @@ const Cosmeticos = () => {
     infiniteLoop={true}
     autoPlay={false}
     dynamicHeight={true}
+    renderArrowPrev={(onClickHandler, hasPrev, label) =>
+      hasPrev && (
+        <Button
+          onClick={onClickHandler}
+          aria-label={label}
+          sx={{
+            position: "absolute",
+            left: 15,
+            top: "calc(50% - 20px)",
+            zIndex: 2,
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            color: "white",
+            minWidth: "40px",
+            height: "40px",
+            borderRadius: "50%",
+            "&:hover": { backgroundColor: "rgba(0, 0, 0, 0.8)" },
+          }}
+        >
+          &#9664; {/* Código para seta esquerda */}
+        </Button>
+      )
+    }
+    renderArrowNext={(onClickHandler, hasNext, label) =>
+      hasNext && (
+        <Button
+          onClick={onClickHandler}
+          aria-label={label}
+          sx={{
+            position: "absolute",
+            right: 15,
+            top: "calc(50% - 20px)",
+            zIndex: 2,
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            color: "white",
+            minWidth: "40px",
+            height: "40px",
+            borderRadius: "50%",
+            "&:hover": { backgroundColor: "rgba(0, 0, 0, 0.8)" },
+          }}
+        >
+          &#9654; {/* Código para seta direita */}
+        </Button>
+      )
+    }
   >
     {produtos.map((produto) => (
       <Box
@@ -197,11 +241,7 @@ const Cosmeticos = () => {
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
-            opacity: 0,
-            transition: "opacity 0.3s ease",
-            "&:hover": {
-              opacity: 1,
-            },
+            opacity: 1, // Sempre visível
           }}
         >
           <Typography

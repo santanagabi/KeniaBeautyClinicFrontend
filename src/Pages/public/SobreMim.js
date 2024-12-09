@@ -157,13 +157,13 @@ function ProfilePage() {
     marginBottom: "16px", // Ajuste o espaço entre os parágrafos
   }}
 >
-  <p>Olá, é um prazer ter você aqui, bem vou logo me apresentar sou a Dra. Kenia Alves e essa e vou te contar um "pouquinho" sobre mim! ✨</p>
+  <p>Olá, é um prazer ter você aqui! Vou logo me apresentar: sou a Dra. Kênia Alves, e quero contar um pouquinho sobre mim!</p>
   
-  <p>Vim de uma família simples, mas com muito apoio dos meus pais e, acima de tudo, com Deus como pilar central da minha vida, lutei para conquistar meus sonhos. 🙏 Sou cristã, aquariana, casada com o Bruno, um homem incrível que me apoia em cada passo dessa jornada, simplesmente grata pela vida e sou completamente apaixonada pelo que faço! 💖</p>
+  <p>Venho de uma família simples, mas, com muito apoio dos meus pais e, acima de tudo, com Deus como pilar central da minha vida, lutei para conquistar os meus sonhos. Sou cristã, aquariana e casada com o Bruno, um homem incrível que me apoia em cada passo dessa jornada. Sou imensamente grata pela vida e completamente apaixonada pelo que faço!</p>
   
-  <p>Construí a Clínica Dra. Kenia Alves com muito amor e dedicação, para realizar o sonho de oferecer o melhor em rejuvenescimento estratégico e gerenciamento do envelhecimento. ✨ Acredito que a estética deve ser humanizada, acolhedora e acessível a todos que desejam se cuidar e elevar a autoestima. 😊</p>
+  <p>Construí a Clínica Dra. Kênia Alves com muito amor e dedicação, com o objetivo de realizar o sonho de oferecer o melhor em rejuvenescimento estratégico e gerenciamento do envelhecimento. Acredito que a estética deve ser humanizada, acolhedora e acessível a todos que desejam cuidar de si e elevar a autoestima.</p>
 
-  <p>Com mais de 30 especializações e 4 anos de experiência na área, posso dizer que, literalmente, amo o que faço! 💖 Me dedico a realçar a beleza única de cada paciente, trazendo à tona tudo aquilo que o tempo pode ter levado. Para mim, estética vai além de um trabalho, é um propósito de vida. 💫</p>
+  <p>Com mais de 30 especializações e 4 anos de experiência na área, posso afirmar que, literalmente, amo o que faço! Dedico-me a realçar a beleza única de cada paciente, trazendo à tona tudo aquilo que o tempo pode ter levado. Para mim, a estética vai além de um trabalho, é um propósito de vida.</p>
 </Typography>
           </Grid>
 

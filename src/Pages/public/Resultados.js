@@ -246,50 +246,46 @@ const Resultados = () => {
             interval={3000}
             renderArrowPrev={(onClickHandler, hasPrev, label) =>
               hasPrev && (
-                <button
-                  type="button"
-                  onClick={onClickHandler}
-                  title={label}
-                  style={{
-                    position: 'absolute',
-                    top: '50%',
-                    left: '15px',
-                    transform: 'translateY(-50%)',
-                    zIndex: 2,
-                    backgroundColor: '#fdd835',
-                    border: 'none',
-                    borderRadius: '50%',
-                    width: '40px',
-                    height: '40px',
-                    cursor: 'pointer',
-                  }}
-                >
-                  &lt;
-                </button>
+                <Button
+          onClick={onClickHandler}
+          aria-label={label}
+          sx={{
+            position: "absolute",
+            left: 15,
+            top: "calc(50% - 20px)",
+            zIndex: 2,
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            color: "white",
+            minWidth: "40px",
+            height: "40px",
+            borderRadius: "50%",
+            "&:hover": { backgroundColor: "rgba(0, 0, 0, 0.8)" },
+          }}
+        >
+          &#9664; {/* Código para seta esquerda */}
+        </Button>
               )
             }
             renderArrowNext={(onClickHandler, hasNext, label) =>
               hasNext && (
-                <button
-                  type="button"
-                  onClick={onClickHandler}
-                  title={label}
-                  style={{
-                    position: 'absolute',
-                    top: '50%',
-                    right: '15px',
-                    transform: 'translateY(-50%)',
-                    zIndex: 2,
-                    backgroundColor: '#fdd835',
-                    border: 'none',
-                    borderRadius: '50%',
-                    width: '40px',
-                    height: '40px',
-                    cursor: 'pointer',
-                  }}
-                >
-                  &gt;
-                </button>
+                <Button
+          onClick={onClickHandler}
+          aria-label={label}
+          sx={{
+            position: "absolute",
+            right: 15,
+            top: "calc(50% - 20px)",
+            zIndex: 2,
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            color: "white",
+            minWidth: "40px",
+            height: "40px",
+            borderRadius: "50%",
+            "&:hover": { backgroundColor: "rgba(0, 0, 0, 0.8)" },
+          }}
+        >
+          &#9654; {/* Código para seta direita */}
+        </Button>
               )
             }
           >

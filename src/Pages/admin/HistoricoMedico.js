@@ -14,7 +14,7 @@ import axios from 'axios';
 import logo from '../images/logo.png';
 import imageCompression from 'browser-image-compression';
 
-const API_URL =  "https://proj-clinica-estetica-api.onrender.com"
+const API_URL = process.env.REACT_APP_API_URL;
 
 const HistoricoMedico = ({ pacienteId }) => {
   const [historico, setHistorico] = useState(null);

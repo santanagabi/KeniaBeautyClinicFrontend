@@ -11,6 +11,9 @@ import espaco4 from "../images/espaco/espaco-4.jpg";
 import espaco5 from "../images/espaco/espaco-5.jpg";
 import espaco6 from "../images/espaco/espaco-6.jpg";
 import espaco7 from "../images/espaco/espaco-7.jpg";
+import espaco8 from "../images/espaco/espaco-8.jpg";
+import espaco9 from "../images/espaco/espaco-9.jpg";
+import espaco10 from "../images/espaco/espaco-10.jpg";
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
@@ -25,6 +28,9 @@ function LocationPage() {
     { id: 5, src: espaco5, alt: "Espaço 5" },
     { id: 6, src: espaco6, alt: "Espaço 6" },
     { id: 7, src: espaco7, alt: "Espaço 7" },
+    { id: 8, src: espaco8, alt: "Espaço 8" },
+    { id: 9, src: espaco9, alt: "Espaço 9" },
+    { id: 10, src: espaco10, alt: "Espaço 10" },
   ];
 
   return (

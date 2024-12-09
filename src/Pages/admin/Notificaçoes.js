@@ -6,7 +6,9 @@ import "react-calendar/dist/Calendar.css";
 import { useNavigate } from "react-router-dom";
 import logo from "../../images/logo.png";
 
-const API_URL =  "https://proj-clinica-estetica-api.onrender.com"
+// Definição das URLs
+const API_URL_BASE = process.env.REACT_APP_API_URL || "http://localhost:3000";
+const API_LEMBRETES_URL = `${API_URL_BASE}/api/lembretes`;
 
 function Notificacoes() {
   const navigate = useNavigate();
@@ -19,12 +21,10 @@ function Notificacoes() {
     prioridade: "",
   });
 
-  const API_URL =  `${API_URL}/api/lembretes`;
-
   useEffect(() => {
     const fetchLembretes = async () => {
       try {
-        const response = await axios.get(API_URL);
+        const response = await axios.get(API_LEMBRETES_URL);
         setLembretes(response.data);
       } catch (error) {
         console.error("Erro ao buscar lembretes:", error);
@@ -53,7 +53,7 @@ function Notificacoes() {
         ...novoLembrete,
         dataRetorno: selectedDate,
       };
-      const response = await axios.post(API_URL, lembrete);
+      const response = await axios.post(API_LEMBRETES_URL, lembrete);
       setLembretes([...lembretes, response.data]);
       setNovoLembrete({ paciente: "", procedimento: "", prioridade: "" });
       handleClose();
@@ -64,7 +64,7 @@ function Notificacoes() {
 
   const handleDeleteLembrete = async (id) => {
     try {
-      await axios.delete(`${API_URL}/${id}`);
+      await axios.delete(`${API_LEMBRETES_URL}/${id}`);
       setLembretes(lembretes.filter((lembrete) => lembrete.id !== id));
     } catch (error) {
       console.error("Erro ao deletar lembrete:", error);
