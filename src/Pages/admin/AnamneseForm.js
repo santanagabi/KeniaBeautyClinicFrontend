@@ -14,7 +14,6 @@ import {
   Box,
   InputAdornment,
 } from '@mui/material';
-import InputMask from 'react-input-mask';
 
 const API_URL = process.env.REACT_APP_API_URL;
 
@@ -155,34 +154,33 @@ const AnamneseForm = ({ pacienteId }) => {
 
 
   const handleChange = (e) => {
-    const { name, type, value, checked } = e.target;
-    let newValue = type === 'checkbox' ? checked : value;
+    const { name, type, value } = e.target; // No 'checked' needed here
+    let newValue = value;
 
     // Validações e formatações
     switch (name) {
       case 'idade':
-        newValue = newValue.replace(/\D/g, ''); // Permite apenas números
-        newValue = newValue > 0 ? parseInt(newValue, 10) : '';
+      case 'quantosFilhos':
+      case 'vezesPorDia':
+        newValue = newValue.replace(/\D/g, '');
         break;
       case 'cpf':
         newValue = newValue.replace(/\D/g, '').slice(0, 11);
         break;
       case 'rg':
-        newValue = newValue.replace(/\D/g, '').slice(0, 9); // Ajuste o limite conforme necessário
+        newValue = newValue.replace(/\D/g, '').slice(0, 9);
         break;
       case 'telefone':
-        break; 
+        newValue = newValue.replace(/\D/g, ''); // Remove non-digits
+        if (newValue.length > 0) {
+           newValue = `(${newValue.slice(0, 2)}) ${newValue.slice(2, 7)}-${newValue.slice(7, 11)}`;
+        }
+        break;
       case 'peso':
-        newValue = newValue.replace(/[^0-9.]/g, '').slice(0, 5); // Permite números e ponto decimal, limita a 5 caracteres
+        newValue = newValue.replace(/[^0-9.]/g, '').slice(0, 5);
         break;
       case 'altura':
-        newValue = newValue.replace(/[^0-9.]/g, '').slice(0, 4); // Permite números e ponto decimal, limita a 4 caracteres
-        break;
-        case 'quantosFilhos':
-        newValue = newValue.replace(/\D/g, '');
-        break;
-       case 'vezesPorDia':
-        newValue = newValue.replace(/\D/g, '');
+        newValue = newValue.replace(/[^0-9.]/g, '').slice(0, 4);
         break;
       default:
         break;
@@ -328,39 +326,37 @@ const AnamneseForm = ({ pacienteId }) => {
             />
         </Box>
         <Box mb={2}>
-          <InputMask
-            mask="999.999.999-99"
-            value={formData.cpf}
-            onChange={handleChange}
-          >
-            {() => (
-              <TextField
-                fullWidth
-                label="CPF"
-                name="cpf"
-              />
-            )}
-          </InputMask>
+        <TextField
+          fullWidth
+          label="CPF"
+          name="cpf"
+          value={formData.cpf}
+          onChange={handleChange}
+          inputProps={{ maxLength: 11 }} // Limit input length
+          placeholder="999.999.999-99"
+        />
         </Box>
         <Box mb={2}>
-          <InputMask
-            mask="99.999.999-9" // Máscara para RG (adapte conforme necessário)
-            value={formData.rg}
-            onChange={handleChange}
-          >
-            {() => (
-              <TextField fullWidth label="RG" name="rg" />
-            )}
-          </InputMask>
+        <TextField
+          fullWidth
+          label="RG"
+          name="rg"
+          value={formData.rg}
+          onChange={handleChange}
+          inputProps={{ maxLength: 9 }} // Adjust as needed
+          placeholder="99.999.999-9"
+        />
         </Box>
         <Box mb={2}>
-          <InputMask
-            mask="(99) 99999-9999" // Máscara para telefone (adapte conforme necessário)
-            value={formData.telefone}
-            onChange={handleChange}
-          >
-            {() => <TextField fullWidth label="Telefone" name="telefone" />}
-          </InputMask>
+        <TextField
+          fullWidth
+          label="Telefone"
+          name="telefone"
+          value={formData.telefone}
+          onChange={handleChange}
+          inputProps={{ maxLength: 15 }} // Adjust as needed
+           placeholder="(99) 99999-9999"
+        />
         </Box>
         <Box mb={3}>
           <Typography variant="h4" display="flex" justifyContent="center">
@@ -377,14 +373,15 @@ const AnamneseForm = ({ pacienteId }) => {
           />
         </Box>
         <Box mb={2}>
-        <InputMask
-          mask="9.99"
-          value={formData.altura}
-          onChange={handleChange}
-          placeholder="Ex: 1.80"
-        >
-          {() => <TextField fullWidth label="Altura (m)" name="altura" />}
-        </InputMask>
+        <TextField
+            fullWidth
+            label="Altura (m)"
+            name="altura"
+            value={formData.altura}
+            onChange={handleChange}
+            placeholder="Ex: 1.80"
+            inputProps={{ maxLength: 3 }} // Adjust as needed
+          />
       </Box>
         <Box mb={2}>
           <FormControlLabel
