@@ -19,7 +19,7 @@ import contatoFoto from "../images/Kenia-contato.jpg";
 import { Instagram, Email, WhatsApp, Lock } from "@mui/icons-material";
 import axios from "axios";
 
-const API_URL =  "https://proj-clinica-estetica-api.onrender.com"
+const API_URL = process.env.REACT_APP_API_URL;
 
 function ContactPage() {
   const navigate = useNavigate();

@@ -11,7 +11,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import logo from '../images/logo.png';
 
-const API_URL =  "https://proj-clinica-estetica-api.onrender.com"
+const API_URL = process.env.REACT_APP_API_URL;
 
 function Register() {
   const [formData, setFormData] = useState({

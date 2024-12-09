@@ -13,7 +13,7 @@ import { Link, useNavigate } from 'react-router-dom'; // Importa o Link para nav
 import Cookies from 'js-cookie'; // Importa o Cookies
 import logo from '../images/logo.png';
 
-const API_URL =  "https://proj-clinica-estetica-api.onrender.com"
+const API_URL = process.env.REACT_APP_API_URL;
 
 function Dashboard() {
   const [transacoes, setTransacoes] = useState([]);
